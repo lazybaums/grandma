@@ -17,46 +17,47 @@
 <body>
     <div id="glass-floor"></div>
     <div id="status">No Signal</div>
-    <iframe id="bird-stream" src="" allow="autoplay; encrypted-media; fullscreen"></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/B4-L2nfGcuE?si=-fAQypAGH2aByhWF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- <iframe id="bird-stream" src="" allow="autoplay; encrypted-media; fullscreen"></iframe> -->
 
     <script>
-        // CRITICAL: This is the URL from your "Publish to Web" CSV settings
-        //const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoRvNky38XU0omd4-nNvW1hP2SgRS7CkFlw6-ammvgHaRnuBkQD8WzE8uUM8_aZTzpk91UsnM_f3k8/pub?gid=0&single=true&output=csv';
-        const CSV_URL = 'https://lazybaums.github.io/grandma/change-youtube-link-here.txt';
-        let currentUrl = "";
+        // // CRITICAL: This is the URL from your "Publish to Web" CSV settings
+        // //const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoRvNky38XU0omd4-nNvW1hP2SgRS7CkFlw6-ammvgHaRnuBkQD8WzE8uUM8_aZTzpk91UsnM_f3k8/pub?gid=0&single=true&output=csv';
+        // const CSV_URL = 'https://lazybaums.github.io/grandma/change-youtube-link-here.txt';
+        // let currentUrl = "";
 
-        async function checkUpdate() {
-            const statusDiv = document.getElementById('status');
-            try {
-                const response = await fetch(CSV_URL);
-                const text = await response.text();
-                const match = text.match(/https?:\/\/[^\s,"]+/);
-                const rawUrl = match ? match[0] : null;
+        // async function checkUpdate() {
+        //     const statusDiv = document.getElementById('status');
+        //     try {
+        //         const response = await fetch(CSV_URL);
+        //         const text = await response.text();
+        //         const match = text.match(/https?:\/\/[^\s,"]+/);
+        //         const rawUrl = match ? match[0] : null;
 
-                if (rawUrl && rawUrl !== currentUrl) {
-                    currentUrl = rawUrl;
-                    let videoId = "";
+        //         if (rawUrl && rawUrl !== currentUrl) {
+        //             currentUrl = rawUrl;
+        //             let videoId = "";
                     
-                    if (currentUrl.includes("v=")) {
-                        videoId = currentUrl.split("v=")[1].split("&")[0];
-                    } else if (currentUrl.includes("youtu.be/")) {
-                        videoId = currentUrl.split("youtu.be/")[1].split("?")[0];
-                    } else {
-                        videoId = currentUrl.split("/").pop().split("?")[0];
-                    }
+        //             if (currentUrl.includes("v=")) {
+        //                 videoId = currentUrl.split("v=")[1].split("&")[0];
+        //             } else if (currentUrl.includes("youtu.be/")) {
+        //                 videoId = currentUrl.split("youtu.be/")[1].split("?")[0];
+        //             } else {
+        //                 videoId = currentUrl.split("/").pop().split("?")[0];
+        //             }
 
-                    //document.getElementById('bird-stream').src = `https://youtube.com{videoId}?autoplay=1&mute=0&rel=0`;
-                    document.getElementById('bird-stream').src = `https://www.youtube.com/embed/{videoId}?si=-fAQypAGH2aByhWF`;
-                    statusDiv.style.display = "none";
-                }
-            } catch (e) {
-                statusDiv.style.display = "block";
-                statusDiv.innerText = "No Signal";
-            }
-        }
+        //             //document.getElementById('bird-stream').src = `https://youtube.com{videoId}?autoplay=1&mute=0&rel=0`;
+        //             document.getElementById('bird-stream').src = `https://www.youtube.com/embed/{videoId}?si=-fAQypAGH2aByhWF`;
+        //             statusDiv.style.display = "none";
+        //         }
+        //     } catch (e) {
+        //         statusDiv.style.display = "block";
+        //         statusDiv.innerText = "No Signal";
+        //     }
+        // }
 
-        setInterval(checkUpdate, 30000);
-        checkUpdate();
+        // setInterval(checkUpdate, 30000);
+        // checkUpdate();
     </script>
 </body>
 </html>
