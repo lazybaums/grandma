@@ -45,7 +45,8 @@
                         videoId = currentUrl.split("/").pop().split("?")[0];
                     }
 
-                    document.getElementById('bird-stream').src = `https://youtube.com{videoId}?autoplay=1&mute=0&rel=0`;
+                    //document.getElementById('bird-stream').src = `https://youtube.com{videoId}?autoplay=1&mute=0&rel=0`;
+                    document.getElementById('bird-stream').src = `https://www.youtube.com/embed/{videoId}?si=-fAQypAGH2aByhWF`;
                     statusDiv.style.display = "none";
                 }
             } catch (e) {
